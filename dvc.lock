@@ -30,29 +30,29 @@ stages:
           random_state: 42
           model_dir: model/
         data_split:
-          test_size: 0.25
+          test_size: 0.3
     outs:
     - path: data/X_test.pkl
-      md5: e05af96454cea3664bb38b858dafb94e
-      size: 186030
+      md5: cfe0471ee123e1e8deb00df7b57985ca
+      size: 223039
     - path: data/X_train.pkl
-      md5: 7caa1ff6b9fd082639f697e702dacb15
-      size: 556049
+      md5: 2746c1042b27ff92b691896cec45707f
+      size: 519047
     - path: data/y_test.pkl
-      md5: 7743d704b8b97cc303ceef12b9be6832
-      size: 60613
+      md5: 2723f219be78fc97a83cb1c0537a2fed
+      size: 72622
     - path: data/y_train.pkl
-      md5: c5e58ac55c3f8077ffac66b0e9b3536a
-      size: 180622
+      md5: fae58cd6792372db1dae90d1c84feee6
+      size: 168622
   train:
     cmd: python stages/train.py --config=params.yaml
     deps:
     - path: data/X_train.pkl
-      md5: 7caa1ff6b9fd082639f697e702dacb15
-      size: 556049
+      md5: 2746c1042b27ff92b691896cec45707f
+      size: 519047
     - path: data/y_train.pkl
-      md5: c5e58ac55c3f8077ffac66b0e9b3536a
-      size: 180622
+      md5: fae58cd6792372db1dae90d1c84feee6
+      size: 168622
     - path: stages/train.py
       md5: d54e4eaf7ad9f7c5bb9a740d48a2f9d2
       size: 2536
@@ -83,25 +83,25 @@ stages:
             max_depth: 20
     outs:
     - path: model//clf-model
-      md5: 54357c45b00fd34c97dc6a0d6292a140
-      size: 20931780
+      md5: 62fa727b98dd195bccca3a25d5133ff7
+      size: 19823124
     - path: model//clf-model.mlem
-      md5: 0373091142c0dff81bc2b5aa1ddb740c
+      md5: 2293d9adfdec78a7f379d76549f20153
       size: 1995
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
     - path: data/X_test.pkl
-      md5: e05af96454cea3664bb38b858dafb94e
-      size: 186030
+      md5: cfe0471ee123e1e8deb00df7b57985ca
+      size: 223039
     - path: data/y_test.pkl
-      md5: 7743d704b8b97cc303ceef12b9be6832
-      size: 60613
+      md5: 2723f219be78fc97a83cb1c0537a2fed
+      size: 72622
     - path: model//clf-model
-      md5: 54357c45b00fd34c97dc6a0d6292a140
-      size: 20931780
+      md5: 62fa727b98dd195bccca3a25d5133ff7
+      size: 19823124
     - path: model//clf-model.mlem
-      md5: 0373091142c0dff81bc2b5aa1ddb740c
+      md5: 2293d9adfdec78a7f379d76549f20153
       size: 1995
     - path: stages/eval.py
       md5: 17badaa85160eacd8dccf45d4861fc3b
@@ -127,7 +127,7 @@ stages:
           random_state: 42
           model_dir: model/
         data_split:
-          test_size: 0.25
+          test_size: 0.3
         train:
           model_type: randomforest
           params:
@@ -135,17 +135,17 @@ stages:
             max_depth: 20
     outs:
     - path: eval_plots/cm.png
-      md5: 74ee4006080e11e7b78a97bb4c45f4ce
-      size: 10413
+      md5: 95eaf6b5b34ff95e7ea812264fec8adb
+      size: 10324
     - path: eval_plots/plots/sklearn/roc.json
-      md5: 45794f2f47db6ebbf51e78d21a873462
-      size: 86158
+      md5: a39dd79f28ca17fb6fa3577772861a88
+      size: 96162
     - path: feat_imp.csv
-      md5: 0877a48b2e2935cb7f596d30137a4e2c
-      size: 299
+      md5: b1bfaeeb221c2409247d17f3760e2c1d
+      size: 306
     - path: metrics.json
-      md5: e2d504dafe25e51af97c47146e1b15b8
+      md5: dec6fa103efaf067b035c623410e0f07
       size: 98
     - path: models/perm_imp.joblib
-      md5: 7a5f7a05456e53c74c807737abd136eb
-      size: 20930459
+      md5: 5d2f62a85316b9c6591d1c0d468c2c07
+      size: 19821803
