@@ -1,7 +1,7 @@
 artifacts:
   data:
-    hash: c8a06d11eee4053037d215f4fe6b7ae5
-    size: 20931746
+    hash: b087e7d3a91742457ddb5863fcf41c3d
+    size: 20931780
     uri: clf-model
 call_orders:
   predict:
@@ -90,8 +90,9 @@ processors:
     type: sklearn_pipeline
 requirements:
 - module: numpy
-  version: 1.23.5
+  version: 1.24.2
 - module: pandas
-  version: 1.5.2
+  version: 1.5.3
 - module: sklearn
-  version: 1.2.0
+  package_name: scikit-learn
+  version: 1.2.2
