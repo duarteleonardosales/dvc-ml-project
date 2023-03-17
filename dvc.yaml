@@ -1,5 +1,5 @@
 stages:
-  data_split: 
+  data_split:
     cmd: python stages/data_split.py --config=params.yaml
     deps:
       - stages/data_split.py
