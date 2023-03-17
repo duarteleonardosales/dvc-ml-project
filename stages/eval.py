@@ -15,8 +15,9 @@ from dvclive import Live
 from eli5.sklearn import PermutationImportance
 from joblib import dump
 from mlem.api import load
-from sklearn.metrics import (confusion_matrix, f1_score, make_scorer,
+from sklearn.metrics import (confusion_matrix, f1_score, make_scorer, r2_score,
                              roc_auc_score)
+
 from utils.load_params import load_params
 
 
@@ -36,6 +37,7 @@ def eval(data_dir, model_dir, perm_imp_model_path, random_state):
     sns.heatmap(cm, annot=True, cmap=plt.cm.Blues)
     plt.savefig(eval_plots_dir/'cm.png')
     
+    r2 = r2_score(y_test, y_pred)
     f1 = f1_score(y_test, y_pred)
     roc_auc = roc_auc_score(y_test, y_prob)
     live.log_sklearn_plot("roc", y_test, y_prob)
@@ -56,6 +58,7 @@ def eval(data_dir, model_dir, perm_imp_model_path, random_state):
     dump(perm, perm_imp_model_path)
     
     metrics = {
+        'r2':r2,
         'f1': f1,
         'roc_auc': roc_auc
     }
