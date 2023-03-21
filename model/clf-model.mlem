@@ -1,7 +1,7 @@
 artifacts:
   data:
-    hash: 07648761136aabab5046619981be4cd1
-    size: 2079494
+    hash: 843e72193093be747ec81cc815bb8b89
+    size: 2084246
     uri: clf-model
 call_orders:
   predict:
