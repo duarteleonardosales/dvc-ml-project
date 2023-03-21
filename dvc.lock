@@ -27,32 +27,32 @@ stages:
           - IsActiveMember
           - EstimatedSalary
           targ_col: Exited
-          random_state: 42
+          random_state: 10
           model_dir: model/
         data_split:
-          test_size: 0.3
+          test_size: 0.2
     outs:
     - path: data/X_test.pkl
-      md5: cfe0471ee123e1e8deb00df7b57985ca
-      size: 223039
+      md5: eb1353353caca5a4caeebdda6fe93370
+      size: 149028
     - path: data/X_train.pkl
-      md5: 2746c1042b27ff92b691896cec45707f
-      size: 519047
+      md5: d96a6ce2c586f041f52ae1b20644f4ac
+      size: 593049
     - path: data/y_test.pkl
-      md5: 2723f219be78fc97a83cb1c0537a2fed
-      size: 72622
+      md5: fb488015812df53726b68c2b180a6dbc
+      size: 48613
     - path: data/y_train.pkl
-      md5: fae58cd6792372db1dae90d1c84feee6
-      size: 168622
+      md5: 7aa890b8016a775dd829738f0caf3ce1
+      size: 192622
   train:
     cmd: python stages/train.py --config=params.yaml
     deps:
     - path: data/X_train.pkl
-      md5: 2746c1042b27ff92b691896cec45707f
-      size: 519047
+      md5: d96a6ce2c586f041f52ae1b20644f4ac
+      size: 593049
     - path: data/y_train.pkl
-      md5: fae58cd6792372db1dae90d1c84feee6
-      size: 168622
+      md5: 7aa890b8016a775dd829738f0caf3ce1
+      size: 192622
     - path: stages/train.py
       md5: d54e4eaf7ad9f7c5bb9a740d48a2f9d2
       size: 2536
@@ -74,35 +74,35 @@ stages:
           - IsActiveMember
           - EstimatedSalary
           targ_col: Exited
-          random_state: 42
+          random_state: 10
           model_dir: model/
         train:
           model_type: randomforest
           params:
-            n_estimators: 150
-            max_depth: 20
+            n_estimators: 500
+            max_depth: 5
     outs:
     - path: model//clf-model
-      md5: 62fa727b98dd195bccca3a25d5133ff7
-      size: 19823124
+      md5: 07648761136aabab5046619981be4cd1
+      size: 2079494
     - path: model//clf-model.mlem
-      md5: 2293d9adfdec78a7f379d76549f20153
-      size: 1995
+      md5: 7ad9a8f4f0757fbd85c78c03576b3a17
+      size: 1994
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
     - path: data/X_test.pkl
-      md5: cfe0471ee123e1e8deb00df7b57985ca
-      size: 223039
+      md5: eb1353353caca5a4caeebdda6fe93370
+      size: 149028
     - path: data/y_test.pkl
-      md5: 2723f219be78fc97a83cb1c0537a2fed
-      size: 72622
+      md5: fb488015812df53726b68c2b180a6dbc
+      size: 48613
     - path: model//clf-model
-      md5: 62fa727b98dd195bccca3a25d5133ff7
-      size: 19823124
+      md5: 07648761136aabab5046619981be4cd1
+      size: 2079494
     - path: model//clf-model.mlem
-      md5: 2293d9adfdec78a7f379d76549f20153
-      size: 1995
+      md5: 7ad9a8f4f0757fbd85c78c03576b3a17
+      size: 1994
     - path: stages/eval.py
       md5: 17badaa85160eacd8dccf45d4861fc3b
       size: 2762
@@ -124,28 +124,28 @@ stages:
           - IsActiveMember
           - EstimatedSalary
           targ_col: Exited
-          random_state: 42
+          random_state: 10
           model_dir: model/
         data_split:
-          test_size: 0.3
+          test_size: 0.2
         train:
           model_type: randomforest
           params:
-            n_estimators: 150
-            max_depth: 20
+            n_estimators: 500
+            max_depth: 5
     outs:
     - path: eval_plots/cm.png
-      md5: 95eaf6b5b34ff95e7ea812264fec8adb
-      size: 10324
+      md5: 92802e63bcb00d701f3b275c3eca6a11
+      size: 10526
     - path: eval_plots/plots/sklearn/roc.json
-      md5: a39dd79f28ca17fb6fa3577772861a88
-      size: 96162
+      md5: f4ee1aed1f7f39e818b6c945a55188e9
+      size: 63990
     - path: feat_imp.csv
-      md5: b1bfaeeb221c2409247d17f3760e2c1d
-      size: 306
+      md5: 10ecce57f13ca694d463fad26aa1b8d2
+      size: 310
     - path: metrics.json
-      md5: dec6fa103efaf067b035c623410e0f07
-      size: 98
+      md5: c854a3c670804fa1004e0ee101d735aa
+      size: 97
     - path: models/perm_imp.joblib
-      md5: 5d2f62a85316b9c6591d1c0d468c2c07
-      size: 19821803
+      md5: 4cebb56c4828bb3244dd646def833849
+      size: 2077243
